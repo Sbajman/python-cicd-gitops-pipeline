@@ -46,12 +46,13 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube') {
+                withSonarQubeEnv('SonarQube') {
                     sh '''
                     echo "Running Sonar Scanner in Docker..."
 
                     docker run --rm \
-                        -e SONAR_HOST_URL=http://host.docker.internal:9001 \
+                        --network ci \
+                        -e SONAR_HOST_URL=http://sonarqube:9000 \
                         -e SONAR_LOGIN=$SONAR_AUTH_TOKEN \
                         -v "$PWD:/usr/src" \
                         sonarsource/sonar-scanner-cli \
@@ -62,6 +63,7 @@ pipeline {
                 }
             }
         }
+
   
         stage('Quality Gate') {
             steps {
