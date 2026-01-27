@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app app
 
-RUN Chown -R appuser:appuser /app
+RUN chown -R appuser:appuser /app
 USER appuser
 
 EXPOSE 8085
