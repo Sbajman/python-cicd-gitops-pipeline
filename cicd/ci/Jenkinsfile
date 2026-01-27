@@ -48,17 +48,22 @@ pipeline {
             steps {
                 withSonarQubeEnv('Sonarqube') {
                     sh '''
+                    echo "Running Sonar Scanner in Docker..."
+
                     docker run --rm \
                         --network ci-network \
                         -e SONAR_HOST_URL=$SONAR_HOST_URL \
                         -e SONAR_LOGIN=$SONAR_AUTH_TOKEN \
-                        -v $PWD:/usr/src \
-                        sonarsource/sonar-scanner-cli
+                        -v "$PWD:/usr/src" \
+                        sonarsource/sonar-scanner-cli \
+                        -Dsonar.projectKey=python-cicd-app \
+                        -Dsonar.sources=app \
+                        -Dsonar.tests=tests
                     '''
                 }
             }
-         }
-
+        }
+  
         stage('Quality Gate') {
             steps {
                 script {
