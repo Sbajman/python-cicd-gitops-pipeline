@@ -65,6 +65,7 @@ pipeline {
                         -Dsonar.login='squ_f954bb32da030b6a0f41970d173e694870b171bd' \
                         -Dsonar.projectKey=python-cicd-app \
                         -Dsonar.sources=. \
+                        -Dsonar.working.directory=/usr/src/.scannerwork \
                         -Dsonar.scanner.metadataFilePath=/usr/src/.scannerwork/report-task.txt
                     '''
 
