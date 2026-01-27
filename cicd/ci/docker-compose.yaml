@@ -31,7 +31,7 @@ services:
      - SONARQUBE_JDBC_PASSWORD=sonar # DB Password
     volumes:
      - sonarqube_data:/opt/sonarqube/data
-     - sonarqube_extentions:/opt/sonarqube/extentions
+     - sonarqube_extensions:/opt/sonarqube/extensions
      - sonarqube_logs:/opt/sonarqube/logs
     restart: unless-stopped
 
