@@ -113,22 +113,20 @@ pipeline {
         stage('Deploy on Dev') {
             steps {
                 script {
-                    def containerName = "python-app-container"
-                    def imageTag = env.COMMIT_HASH
+                        def containerName = "python-app-container"
+                        def imageTag = env.COMMIT_HASH
 
-                    sh """
-                      if [ \$(docker ps -q -f name=${containerName}) ]; then
-                          echo "Stopping and removing existing container..."
-                          docker stop ${containerName}
-                          docker rm -f ${containerName} || true
-                      fi
-                    """
+                        sh """
+                        echo "Removing existing container if present..."
+                        docker rm -f ${containerName} || true
 
-                    sh """
-                      echo "Running new container with image tag ${imageTag}..."
-                      docker run -d --name ${containerName} -p 8090:8085 ${IMAGE_NAME}:${imageTag}
-                    """
-                }
+                        echo "Running new container with image tag ${imageTag}..."
+                        docker run -d \
+                            --name ${containerName} \
+                            -p 8090:8085 \
+                            ${IMAGE_NAME}:${imageTag}
+                        """
+                    }
             }
         }
 
