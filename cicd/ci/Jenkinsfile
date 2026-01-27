@@ -69,8 +69,8 @@ pipeline {
                         -Dsonar.scanner.metadataFilePath=/usr/src/.scannerwork/report-task.txt
                     '''
 
-                    echo "Verifying report-task.txt location"
-                    sh 'ls -l .scannerwork/report-task.txt'
+                    //echo "Verifying report-task.txt location"
+                    //sh 'ls -l .scannerwork/report-task.txt'
                 }
             }
         }
