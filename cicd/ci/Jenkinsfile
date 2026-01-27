@@ -50,9 +50,13 @@ pipeline {
                     sh '''
                     echo "Running Sonar Scanner in Docker..."
 
+                    JENKINS_UID=$(id -u)
+                    JENKINS_GID=$(id -g)
+
                     docker run --rm \
                         --network ci \
-                        -v "$PWD:/usr/src" \
+                        --user ${JENKINS_UID}:${JENKINS_GID} \
+                        -v /var/jenkins_home/workspace/python-cicd-app:/usr/src \
                         sonarsource/sonar-scanner-cli \
                         -Dsonar.host.url=$SONAR_HOST_URL \
                         -Dsonar.login='squ_f954bb32da030b6a0f41970d173e694870b171bd' \
