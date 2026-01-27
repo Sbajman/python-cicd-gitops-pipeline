@@ -46,11 +46,18 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                withSonarQubeEnv('Sonarqube') {
-                    sh 'sonar-scanner'
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                    docker run --rm \
+                        --network ci-network \
+                        -e SONAR_HOST_URL=$SONAR_HOST_URL \
+                        -e SONAR_LOGIN=$SONAR_AUTH_TOKEN \
+                        -v $PWD:/usr/src \
+                        sonarsource/sonar-scanner-cli
+                    '''
                 }
             }
-        }
+         }
 
         stage('Quality Gate') {
             steps {
