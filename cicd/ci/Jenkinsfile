@@ -57,8 +57,12 @@ pipeline {
                         -Dsonar.host.url=$SONAR_HOST_URL \
                         -Dsonar.login='squ_f954bb32da030b6a0f41970d173e694870b171bd' \
                         -Dsonar.projectKey=python-cicd-app \
-                        -Dsonar.sources=.
+                        -Dsonar.sources=. \
+                        -Dsonar.scanner.metadataFilePath=/usr/src/report-task.txt
                     '''
+
+                    echo "Verifying report-task.txt"
+                    ls -l report-task.txt
                 }
             }
         }
