@@ -48,6 +48,8 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqube') {
                     sh '''
+                    echo "Preparing workspace for Sonar metadata..."
+                    mkdir -p .scannerwork
                     echo "Running Sonar Scanner in Docker..."
 
                     JENKINS_UID=$(id -u)
@@ -62,11 +64,11 @@ pipeline {
                         -Dsonar.login='squ_f954bb32da030b6a0f41970d173e694870b171bd' \
                         -Dsonar.projectKey=python-cicd-app \
                         -Dsonar.sources=. \
-                        -Dsonar.scanner.metadataFilePath=/usr/src/report-task.txt
+                        -Dsonar.scanner.metadataFilePath=/usr/src/.scannerwork/report-task.txt
                     '''
 
-                    echo "Verifying report-task.txt"
-                    sh 'ls -l report-task.txt'
+                    echo "Verifying report-task.txt location"
+                    sh 'ls -l .scannerwork/report-task.txt'
                 }
             }
         }
