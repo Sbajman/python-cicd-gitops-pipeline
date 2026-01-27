@@ -58,6 +58,7 @@ pipeline {
                     docker run --rm \
                         --network ci \
                         --user ${JENKINS_UID}:${JENKINS_GID} \
+                        -w /usr/src \
                         -v /var/jenkins_home/workspace/python-cicd-app:/usr/src \
                         sonarsource/sonar-scanner-cli \
                         -Dsonar.host.url=$SONAR_HOST_URL \
