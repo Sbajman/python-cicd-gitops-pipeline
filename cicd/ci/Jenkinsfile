@@ -49,7 +49,7 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                     sh '''
                     echo "Preparing workspace for Sonar metadata..."
-                    mkdir -p .scannerwork
+                    sh 'mkdir -p .scannerwork'
                     echo "Running Sonar Scanner in Docker..."
 
                     JENKINS_UID=$(id -u)
@@ -68,7 +68,7 @@ pipeline {
                     '''
 
                     echo "Verifying report-task.txt location"
-                    sh 'ls -l .scannerwork/report-task.txt'
+                    sh 'ls -l /usr/src/.scannerwork/report-task.txt'
                 }
             }
         }
