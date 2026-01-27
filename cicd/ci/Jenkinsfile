@@ -51,7 +51,6 @@ pipeline {
                     echo "Running Sonar Scanner in Docker..."
 
                     docker run --rm \
-                        --network ci-network \
                         -e SONAR_HOST_URL=$SONAR_HOST_URL \
                         -e SONAR_LOGIN=$SONAR_AUTH_TOKEN \
                         -v "$PWD:/usr/src" \
