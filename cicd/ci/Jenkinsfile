@@ -68,7 +68,7 @@ pipeline {
                     '''
 
                     echo "Verifying report-task.txt location"
-                    sh 'ls -l /usr/src/.scannerwork/report-task.txt'
+                    sh 'ls -l .scannerwork/report-task.txt'
                 }
             }
         }
