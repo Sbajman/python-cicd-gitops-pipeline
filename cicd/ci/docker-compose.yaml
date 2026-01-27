@@ -57,7 +57,7 @@ volumes:
     driver: local
   sonarqube_data:
     driver: local
-  sonarqube_extentions:
+  sonarqube_extensions:
     driver: local
   sonarqube_logs:
     driver: local
