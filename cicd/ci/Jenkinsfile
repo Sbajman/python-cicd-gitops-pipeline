@@ -62,7 +62,7 @@ pipeline {
                     '''
 
                     echo "Verifying report-task.txt"
-                    ls -l report-task.txt
+                    sh 'ls -l report-task.txt'
                 }
             }
         }
