@@ -120,7 +120,7 @@ pipeline {
                       if [ \$(docker ps -q -f name=${containerName}) ]; then
                           echo "Stopping and removing existing container..."
                           docker stop ${containerName}
-                          docker rm ${containerName}
+                          docker rm -f ${containerName} || true
                       fi
                     """
 
