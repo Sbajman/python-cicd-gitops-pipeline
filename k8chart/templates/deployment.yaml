@@ -18,9 +18,9 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "k8chart.labels" . | nindent 8 }}
+        {{ include "k8chart.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
-        {{- toYaml . | nindent 8 }}
+        {{ toYaml . | nindent 8 }}
         {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -44,15 +44,14 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          {% comment %} {{- with .Values.livenessProbe }}
-          livenessProbe:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-          {{- with .Values.readinessProbe }}
-          readinessProbe:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-          {{- with .Values.resources }} {% endcomment %}
+         # livenessProbe:
+         #   httpGet:
+         #     path: /
+         #     port: http
+         # readinessProbe:
+         #   httpGet:
+         #     path: /
+         #     port: http
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
