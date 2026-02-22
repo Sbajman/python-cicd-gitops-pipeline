@@ -1,0 +1,12 @@
+apiVersion: v1
+stringData:
+  password: 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
+  url: https://github.com/Sbajman/python-cicd-gitops-pipeline.git 
+  username: Sbajman
+type: Opaque
+kind: Secret
+metadata:
+  name: github-token
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository 
