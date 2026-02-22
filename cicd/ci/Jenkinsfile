@@ -157,6 +157,32 @@ pipeline {
                 }
             }
         }
+        stage('Update image tag') {
+            steps {
+                script {
+                    def imageTag = env.COMMIT_HASH
+
+                     sh 'git checkout main'
+
+                    // Use 'sed' to replace the image tag in values.yaml
+                    sh """
+                        sed -i 's/tag:.*/tag: ${imageTag}/' k8chart/values.yaml
+                    """
+
+                    withCredentials([
+                        gitUsernamePassword(credentialsId: GITHUB_CREDENTIALS_ID, gitToolName: 'Default')
+                    ]) {
+                        sh """
+                             git config user.email "actions@github.com"
+                             git config user.name "GitHub Actions"
+                             git add k8chart/values.yaml
+                             git commit -m "Update image tag to version ${imageTag}"
+                             git push origin main
+                        """
+                    }
+                }
+            }
+        }
 
 
     }
