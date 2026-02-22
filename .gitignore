@@ -2,3 +2,5 @@ venv/
 venv
 __pycache__
 scratch.txt
+dockerhub-token.yaml
+github-token.yaml

@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: <docker-hub-token>
+kind: Secret
+metadata:
+  name: dockerhub-secret
+  namespace: app
+type: kubernetes.io/dockerconfigjson

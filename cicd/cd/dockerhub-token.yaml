@@ -1,8 +1,0 @@
-apiVersion: v1
-data:
-  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJzcnJhb2IxMiIsInBhc3N3b3JkIjoiZGNrcl9wYXRfc05hVmV0UlNadldOVS1VVzgyTlF4Y0dLSE1vIiwiZW1haWwiOiJzcnJhb2JAZ21haWwuY29tIiwiYXV0aCI6ImMzSnlZVzlpTVRJNlpHTnJjbDl3WVhSZmMwNWhWbVYwVWxOYWRsZE9WUzFWVnpneVRsRjRZMGRMU0UxdiJ9fX0=
-kind: Secret
-metadata:
-  name: dockerhub-secret
-  namespace: app
-type: kubernetes.io/dockerconfigjson
