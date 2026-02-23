@@ -80,7 +80,7 @@ flowchart LR
 * Ensures self-healing + drift correction
 
 #### Repository Structure
-
+```
 .
 ├── Dockerfile
 ├── Readme.md
@@ -102,7 +102,7 @@ flowchart LR
 ├── tests
     ├── __pycache__
     └── test_math_utils.py
-
+```
 
 The POC approach was to have CI and CD files in the same repo, They can architected to be in a different repository.
 
