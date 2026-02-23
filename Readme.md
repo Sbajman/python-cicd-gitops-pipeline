@@ -1,4 +1,4 @@
-#### Utlimate-CICD-PILELINE A GITOPS APPROACH for Continous delivery(Jenkins + ArgoCD + HELM+ Kubernetes)
+#### ULTIMATE-CICD-PIPELINE A GITOPS APPROACH for Continous delivery(Jenkins + ArgoCD + HELM + K8's)
 End-to-end production-style CI/CD pipeline using GitOps principles, enabling automated build, containerization, and Kubernetes deployment with ArgoCD.
 
 
