@@ -15,42 +15,16 @@ Summary:
 CI builds artifacts and updates a GitOps repository, while CD is fully decoupled and driven by ArgoCD, enabling scalable, reusable pipelines across multiple services
 
 
-## Architecture
+## Architecture Diagram (Logical Flow)
 
-<!-- ![CI/CD Pipeline](pipeline.svg) -->
 
 <!-- ## CI/CD Pipeline
 <details>
 <summary>Logical Flow</summary> -->
 
-```mermaid
-flowchart LR
-    subgraph CI[Continuous Integration]
-        A[🐙 GitHub Repo]
-        A -->|Webhook| B[Jenkins ⚙️]
-        B --> C[Maven]
-        C -->|Yes| D[SonarQube]
-        C -->|No| R[Report & Exit]
-        D -->|Yes| E[Tests]
-        D -->|No| R
-        E --> F[Docker Build]
-        F --> G[Push Image]
-    end
 
-    subgraph CD[Continuous Deployment]
-        H[Image Updater]
-        I[Manifests Repo]
-        J[Argo CD]
-        K[Kubernetes]
-    end
-
-    G --> H
-    H --> I
-    I --> J
-    J --> K
-
-    R --> N[Slack / Email]
-```
+#### Architecture Diagram:
+![alt text](image-2.png)
 
 
 #### Tech Stack
