@@ -106,7 +106,8 @@ flowchart LR
 
 The POC approach was to have CI and CD files in the same repo, They can architected to be in a different repository.
 
-To generalize the and to scale across multiple apps, Jenkins pipelines must be templated and reusable, not custom per app.
+Proposed Production improvements:
+To generalize the pipeline and to scale across multiple apps, Jenkins pipelines must be templated and reusable, not custom per app.
 Key strategies: 1. Shared Libraries, 2. Parameterized Pipelines, 3. Standard Repo Contract (Every app repo should follow a structure) 4. GitOps Repo Standardization (One repo for all deployments) , Jenkins updates only 5. Avoid duplicating YAML Use: Helm charts OR Kustomize overlays , 6 Centralized Governance Enforce: security scans, naming conventions, tagging strategy.
 
 
@@ -135,3 +136,8 @@ docker compose up
 ( the above tokens are same as configured in Jenkins)
 
 ```
+
+
+![alt text](image.png)
+
+![alt text](image-1.png)
